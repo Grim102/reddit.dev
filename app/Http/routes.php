@@ -14,3 +14,21 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/uppercase/{str}', function($str) { 
+	return strtoupper($str);
+});
+
+Route::get('/increment/{int}', function($int) {
+	return ++$int;
+});
+
+Route::get('/add/{int1}+{int2}', function($int1, $int2) {
+	return $int1 + $int2;
+});
+
+Route::get('/rolldice/{guess}', function($guess) {
+	$data['random'] = mt_rand(1, 6);
+	$data['guess'] = $guess;
+	return view('roll-dice', $data);
+});
