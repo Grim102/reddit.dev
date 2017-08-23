@@ -1,11 +1,11 @@
 @extends('layouts.master')
 
-@section('title)
+@section('title')
 	<title>Uppercase</title>
-@stop
+@endsection
 
 @section('content')
-
-<h1>{{ $uppercase }}</h1>
-
-@stop
+<div class="jumbotron">
+	<h1>{{ $uppercase }}</h1>
+</div>
+@endsection
