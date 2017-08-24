@@ -15,14 +15,11 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/uppercase/{str}', function($str) { 
-	$data['uppercase'] = strtoupper($str);
-	return view('uppercase', $data);
-});
+Route::get('/uppercase/{str}', 'HomeController@uppercase'); 
 
-Route::get('/increment/{int}', function($int) {
-	return ++$int;
-});
+Route:get('/lowercase/{str}', 'HomeController@lowercase');
+
+Route::get('/increment/{int}', 'HomeController@increment');
 
 Route::get('/add/{int1}+{int2}', function($int1, $int2) {
 	return $int1 + $int2;
