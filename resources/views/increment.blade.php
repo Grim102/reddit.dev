@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('title')
-	<title>Uppercase</title>
+	<title>Increment</title>
 @endsection
 
 @section('content')
