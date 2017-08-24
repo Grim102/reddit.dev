@@ -6,7 +6,7 @@
 
 @section('content')
 <div class="jumbotron">
-	<h1>{{ $uppercase }}</h1>
+	<h1>{{ $num }}</h1>
 </div>
-<a href="{{ action('HomeController@lowercase', array($uppercase))  }}">Lowercase</a>
+<a href="{{ action('HomeController@increment', array($num))  }}">Increment</a>
 @endsection
