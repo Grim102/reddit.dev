@@ -5,8 +5,8 @@
 @endsection
 
 @section('content')
-<div class="jumbotron">
+<div class="jumbotron text-center">
 	<h1>{{ $num }}</h1>
+<h2><a href="{{ action('HomeController@increment', array($num))  }}">Increment</a></h2>
 </div>
-<a href="{{ action('HomeController@increment', array($num))  }}">Increment</a>
 @endsection
