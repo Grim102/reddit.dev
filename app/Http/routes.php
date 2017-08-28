@@ -30,3 +30,5 @@ Route::get('/rolldice/{guess}', function($guess) {
 	$data['guess'] = $guess;
 	return view('roll-dice', $data);
 });
+
+Route::resource('posts', 'PostsController');
