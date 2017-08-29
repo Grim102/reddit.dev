@@ -32,3 +32,9 @@ Route::get('/rolldice/{guess}', function($guess) {
 });
 
 Route::resource('posts', 'PostsController');
+
+Route::get('orm-test', function()
+{
+	$post = \App\Models\Post::find(1);
+	$post->delete();
+});
