@@ -16,7 +16,9 @@ class PostsController extends Controller
      */
     public function index()
     {
-        //
+		$posts = \App\Models\Post::all();
+		$result['posts'] = $posts;
+		return view('posts/index', $result);
     }
 
     /**
@@ -37,7 +39,15 @@ class PostsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $post = new \App\Models\Post();
+		$post->title = $resquest->title;
+		$post->url = $request->url;
+		$post->content  = $request->content;
+		$post->created_by = $request->id;
+		$post->save();
+
+		$request->session()->flash("successMessage", "Your post was saved successfully");
+        return \Redirect::action('PostsController@index');
     }
 
     /**
@@ -48,7 +58,9 @@ class PostsController extends Controller
      */
     public function show($id)
     {
-        //
+		$post = \App\Models\Post::find($id);
+		$result['post'] = $post;
+		return view('posts/show', $result);
     }
 
     /**
