@@ -12,7 +12,7 @@
 <nav class="navbar navbar-default">
 	<section class="container-fluid">
 	<section class="navbar-header">
-		<a href="/posts" class="navbar-brand">Reddit Clone</a>
+		<a href="/posts" class="navbar-brand">Grim's Tech Picks</a>
 	</section>
 	<ul class="nav navbar-nav navbar-right">
 		<li><a href="{{ action('PostsController@index') }}">Posts</a></li>
