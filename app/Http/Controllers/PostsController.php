@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use App\Models\Post;
+use Log;
 
 class PostsController extends Controller
 {
@@ -16,7 +18,7 @@ class PostsController extends Controller
      */
     public function index()
     {
-		$posts = \App\Models\Post::all();
+		$posts = Post::paginate(4);
 		$result['posts'] = $posts;
 		return view('posts/index', $result);
     }
@@ -28,7 +30,7 @@ class PostsController extends Controller
      */
     public function create()
     {
-        //
+		return view('posts.create');
     }
 
     /**
@@ -39,7 +41,9 @@ class PostsController extends Controller
      */
     public function store(Request $request)
     {
-        $post = new \App\Models\Post();
+		$this->validate($request, Post::$rules);
+
+        $post = new Post();
 		$post->title = $resquest->title;
 		$post->url = $request->url;
 		$post->content  = $request->content;
@@ -58,9 +62,9 @@ class PostsController extends Controller
      */
     public function show($id)
     {
-		$post = \App\Models\Post::find($id);
-		$result['post'] = $post;
-		return view('posts/show', $result);
+		$post = Post::findOrFail($id);
+		$data['post'] = $post;
+		return view('posts/show', $data);
     }
 
     /**
@@ -71,7 +75,9 @@ class PostsController extends Controller
      */
     public function edit($id)
     {
-        //
+		$post = Post::findOrFail($id);
+        $data['post'] = $post;
+        return view('posts.edit', $data);
     }
 
     /**
@@ -83,7 +89,15 @@ class PostsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+		$this->validate($request, Post::$rules);
+        $post = Post::findOrFail($id);
+        $post->title = $request->title;
+        $post->content = $request->content;
+        $post->url = $request->url;
+        $post->created_by = 1;
+        $post->save();
+        $request->session()->flash("successMessage", "Your post was updated successfully");
+        return \Redirect::action('PostsController@show', $post->id);
     }
 
     /**
@@ -94,6 +108,9 @@ class PostsController extends Controller
      */
     public function destroy($id)
     {
-        //
+		$post = Post::findOrFail($id);
+        $post->delete();
+        $request->session()->flash("successMessage", "Your post was successfully destroyed.");
+        return \Redirect::action('PostsController@index');
     }
 }
