@@ -8,6 +8,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 use App\Models\Post;
 use Log;
+use Auth;
 
 class PostsController extends Controller
 {
@@ -48,7 +49,7 @@ class PostsController extends Controller
 		$this->validate($request, Post::$rules);
 
         $post = new Post();
-		$post->title = $resquest->title;
+		$post->title = $request->title;
 		$post->url = $request->url;
 		$post->content  = $request->content;
 		$post->created_by = Auth::id();
