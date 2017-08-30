@@ -51,7 +51,7 @@ class PostsController extends Controller
 		$post->title = $resquest->title;
 		$post->url = $request->url;
 		$post->content  = $request->content;
-		$post->created_by = $request->id;
+		$post->created_by = Auth::id();
 		$post->save();
 
 		$request->session()->flash("successMessage", "Your post was saved successfully");
