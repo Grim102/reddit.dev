@@ -10,7 +10,7 @@ use Illuminate\Foundation\Auth\AuthenticatesAndRegistersUsers;
 
 class AuthController extends Controller
 {
-	protected $redirectPath = "{{ action('PostsController@index') }}";
+	protected $redirectPath = "{{action('PostsController@index')}}";
 
 	protected $redirectAfterLogout = "/posts";
     /*
