@@ -23,7 +23,7 @@ class PostsController extends Controller
      */
     public function index()
     {
-		$posts = Post::paginate(4);
+		$posts = Post::with('user')->get();
 		$result['posts'] = $posts;
 		return view('posts/index', $result);
     }
