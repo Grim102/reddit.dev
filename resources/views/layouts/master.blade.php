@@ -12,8 +12,15 @@
 <nav class="navbar navbar-default">
 	<section class="container-fluid">
 	<section class="navbar-header">
-		<a href="/posts" class="navbar-brand">Grim's Tech Picks</a>
+		<a href="/posts" class="navbar-brand">Grims' Blog</a>
 	</section>
+	<form method="GET" action="{{ action('PostsController@index') }}" 
+		class="navbar-form navbar-left">
+      <div class="form-group">
+        <input type="text" class="form-control" name="q" placeholder="Search">
+      </div>
+      <button class="btn btn-default">Submit</button>
+    </form>
 	<ul class="nav navbar-nav navbar-right">
 		<li><a href="{{ action('PostsController@index') }}">Posts</a></li>
 		@if (Auth::check())
