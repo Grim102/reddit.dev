@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use App\Http\Controllers\Input;
 use App\Models\Post;
 use Log;
 use Auth;
@@ -21,10 +22,18 @@ class PostsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-		$posts = Post::with('user')->get();
+		if ($request->has('q')) {
+			$q = $request->q;
+			$posts = Post::search($q);
+		}
+		else {
+			$posts = Post::with('user')->get();
+		}
+
 		$result['posts'] = $posts;
+
 		return view('posts/index', $result);
     }
 
@@ -105,6 +114,13 @@ class PostsController extends Controller
         return \Redirect::action('PostsController@show', $post->id);
     }
 
+	public function search(Request $request) 
+	{
+		$term = $request->input('search');
+		dd($term);
+		$posts =  Post::where('title', 'like', '%{$term}%')->get();
+		return view('search', ['posts' => $posts]);
+	}
     /**
      * Remove the specified resource from storage.
      *
