@@ -20,7 +20,12 @@ Route::get('auth/register', 'Auth\AuthController@getRegister');
 Route::post('auth/register', 'Auth\AuthController@postRegister');
 
 Route::get('/', function () {
-    return view('welcome');
+    return Redirect::to('/posts');
+});
+
+Route:get('/post/{num}', function($num) {
+	$post = \App\Models\Post::find($num);
+	return view('posts.post', ['post' => $post]);
 });
 
 Route::resource('posts', 'PostsController');
