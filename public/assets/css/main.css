@@ -2,6 +2,10 @@ html, body {
 	height: 100%;
 }
 
+.right {
+	float: right;
+}
+
 #wrapper {
 	min-height: 100%;
 	margin-bottom: 30px;
