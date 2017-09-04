@@ -4,7 +4,7 @@ $( document ).ready(function() {
 		selector: ".text-form",
 	});
 
-	$('#blog-post > p').css('line-height', '35px');
+	$('#blog-post > p').css('line-height', '40px');
 
 	$('.pagination').addClass('pagination-lg');
 

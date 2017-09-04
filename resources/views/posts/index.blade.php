@@ -14,7 +14,7 @@
 					<h1>{{ $post['title'] }}</h1>
 					<p class="name-date">{{ $post['user']['name'] }}</p>
 					<p class="name-date">{{ $post['created_at'] }}</p>
-					<p>{{ $post['abstract'] }}</p>
+					<section class="blog-post"><p>{{ $post['abstract'] }}</p></section>
 				</section></a>
 			<?php endforeach; ?>
 		<section class="text-center">
