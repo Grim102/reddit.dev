@@ -4,6 +4,9 @@
 	<title>Login</title>
 @stop
 @section('content')
+<section class="jumbotron">
+	<h1>Login</h1>
+</section>
 <section class="col-sm-6 col-sm-offset-3 well">
 <form method="POST" action="/auth/login" class="form-horizontal">
     {!! csrf_field() !!}

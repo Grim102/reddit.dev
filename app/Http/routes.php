@@ -28,5 +28,9 @@ Route:get('/post/{num}', function($num) {
 	return view('posts.post', ['post' => $post]);
 });
 
+Route::get('/about', function() {
+	return view('posts.about');
+});
+
 Route::resource('posts', 'PostsController');
 

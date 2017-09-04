@@ -25,16 +25,17 @@ class PostsController extends Controller
     public function index(Request $request)
     {
 		if ($request->has('q')) {
-			$q = $request->q;
+			$q = Input::escape($request->q);
 			$posts = Post::search($q);
 		}
 		else {
-			$posts = Post::with('user')->get();
+			$posts = Post::with('user')->orderBy('id', 'desc')->paginate(5);
 		}
 
-		$result['posts'] = $posts;
+		$trends = Post::trends();
+	
+		return view('posts/index', ['posts' => $posts, 'trends' => $trends]);
 
-		return view('posts/index', $result);
     }
 
     /**
@@ -56,12 +57,14 @@ class PostsController extends Controller
     public function store(Request $request)
     {
 		$this->validate($request, Post::$rules);
-
+		
         $post = new Post();
 		$post->title = $request->title;
-		$post->url = $request->url;
+		$post->url = "https://www.grim102.com/post/" . $post->id;
+		$post->abstract = $request->abstract;
 		$post->content  = $request->content;
 		$post->created_by = Auth::id();
+		$post->created_at = date('F jS Y');
 		$post->save();
 
 		$request->session()->flash("successMessage", "Your post was saved successfully");
