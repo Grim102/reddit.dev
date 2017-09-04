@@ -3,6 +3,9 @@
 	<title>Register</title>
 @stop
 @section('content')
+<section class="jumbotron">
+	<h1>Register</h1>
+</section>
 <section class="well col-sm-6 col-sm-offset-3">
 <form method="POST" action="/auth/register" class="form-horizontal">
 	<fieldset>

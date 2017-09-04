@@ -17,9 +17,11 @@ class CreatePostsTable extends Migration
 			$table->increments('id');
 			$table->string('title', 100);
 			$table->string('url');
+			$table->string('abstract');
 			$table->text('content');
 			$table->integer('created_by')->unsigned();
-			$table->timestamps();
+			$table->string('created_at');
+			$table->string('updated_at');
 		});
         //
     }
@@ -31,6 +33,6 @@ class CreatePostsTable extends Migration
      */
     public function down()
 	{
-		Shema::drop('posts');
+		Schema::drop('posts');
     }
 }
