@@ -2,7 +2,7 @@
 @extends('layouts.master')
 
 @section('title')
-	<title>Post # {{ $post['id'] }}</title>
+	<title>{{ $post['user']['name'] }}'s Thoughts</title>
 @stop
 
 @section('content')
