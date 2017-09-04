@@ -25,7 +25,7 @@
 	</section>
 	<section class="form-group">
 		<div class="col-lg-10 col-lg-offset-2">
-			<button type="submit" class="btn btn-primary">Login</button>
+			<button type="submit" class="btn btn-primary right">Login</button>
 		</div>
 	</section>
 </form>

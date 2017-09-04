@@ -9,7 +9,7 @@
 	<section class="jumbotron">
 		<h1>{{ $post['title'] }}</h1>
 	</section>
-	<section class="col-sm-12 nopadding">
+	<section class="col-sm-12">
 		<section>
 			<p class="name-date">{{ $post['user']['name'] }}</p>
 			<p class="name-date">{{ $post['created_at'] }}</p>

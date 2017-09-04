@@ -22,6 +22,6 @@
 		<h2>Body</h2>
 		<textarea class="form-control text-form" rows="15" name="content">{{ old('content') }}</textarea>
 	 </div>
-     <button class="btn btn-primary" id="submit">Submit</button>
+     <button class="btn btn-primary right" id="submit">Submit</button>
 </form>
 @endsection
