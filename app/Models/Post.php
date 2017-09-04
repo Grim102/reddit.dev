@@ -43,11 +43,11 @@ class Post extends Model
 		$str = "";
 
 		foreach($trends as $trend) {
-			$str .= preg_replace('/([.,?!])/', '', $trend['content']);
+			$str .= strip_tags(preg_replace('/([.,?!])/', '', $trend['content']));
 			$str .= " ";
-			$str .= preg_replace('/([.,?!])/', '', $trend['abstract']);
+			$str .= strip_tags(preg_replace('/([.,?!])/', '', $trend['abstract']));
 			$str .= " ";
-			$str .= preg_replace('/([.,?!])/', '', $trend['title']);
+			$str .= strip_tags(preg_replace('/([.,?!])/', '', $trend['title']));
 			$str .= " ";
 		}
 
